@@ -10,6 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -70,17 +71,26 @@
 			<li><a href="">welcome ${pageContext.request.userPrincipal.name }</a></li>
 </c:if>			
 
-
-
-			<c:if test="${pageContext.request.userPrincipal.name ==null }">
-			<li><a href="<c:url value="/login"></c:url>"><span class="glyphicon glyphicon-log-in"></span><span  class="txt-hgt"> Login</a></li>
-			<li> <a href="<c:url value="/all/registrationForm"></c:url>"><span class="glyphicon glyphicon-user"  class="txt-hgt" ></span>Register</a></li>
-			</c:if>
-			
 			<c:if test="${pageContext.request.userPrincipal.name !=null }">
 			<li><a href="<c:url value="/j_spring_security_logout"></c:url>">logout</a></li>
 			</c:if>		
-</ul>
+			</ul>
+			<form class="navbar-form navbar-left">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+			 <ul class="nav navbar-nav navbar-right">
+			<c:if test="${pageContext.request.userPrincipal.name ==null }">
+			<li><a href="<c:url value="/login"></c:url>"><span class="glyphicon glyphicon-log-in"></span><span  class="txt-hgt"> Login</a></li>
+			<li> <a href="<c:url value="/all/registrationForm"></c:url>"><span class="glyphicon glyphicon-user"  class="txt-hgt" ></span>Sign Up</a></li>
+			</c:if>
+ </ul>
 </div>
 </nav>
 </body>

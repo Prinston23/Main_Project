@@ -17,7 +17,7 @@
 <span class="glyphicon glypicon-remove-sign"></span>Clear Cart</a>
 
 
-<a href="" class="btn btn-success pull-right" ><span class="glyphicon glypicon-shopping-cart"></span> CheckOut </a>
+<a href="<c:url value="/order/${cartId}"></c:url>" class="btn btn-success pull-right" ><span class="glyphicon glypicon-shopping-cart"></span> CheckOut </a>
 <table class="table table-striped">
 <thead>
 <tr><th>Name</th><th>Quantity</th><th>Total Price</th>
