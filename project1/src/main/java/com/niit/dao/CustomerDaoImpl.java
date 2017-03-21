@@ -11,50 +11,59 @@ import com.niit.model.Authorities;
 import com.niit.model.Cart;
 import com.niit.model.Customer;
 import com.niit.model.Users;
+
 @Repository
-public class CustomerDaoImpl implements CustomerDao{
-	
+public class CustomerDaoImpl implements CustomerDao {
+
 	@Autowired
-private SessionFactory sessionFactory;
-	Logger logger=Logger.getLogger(CustomerDaoImpl.class);
+	private SessionFactory sessionFactory;
+
+	public CustomerDaoImpl() {
+
+	}
+
+	Logger logger = Logger.getLogger(CustomerDaoImpl.class);
+
 	public void saveCustomer(Customer customer) {
-		Session session=sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
 		logger.debug("===========================================================================");
-		//child tables - Users, billingAddress,ShippingAddresss
+		// child tables - Users, billingAddress,ShippingAddresss
 		customer.getUsers().setEnabled(true);
-		
-		//Assignment
-		String username=customer.getUsers().getUsername();
-		String role="ROLE_USER";
-		
-		Authorities authorities=new Authorities();
-		//set the values
+
+		// Assignment
+		String username = customer.getUsers().getUsername();
+		String role = "ROLE_USER";
+
+		Authorities authorities = new Authorities();
+		// set the values
 		authorities.setUsername(username);
 		authorities.setRole(role);
-		
-		session.save(authorities);  //insert into authorites values (?,?,'Role_USER');
-		
-		Cart cart=new Cart();
+
+		session.save(authorities); // insert into authorites values
+									// (?,?,'Role_USER');
+
+		Cart cart = new Cart();
 		customer.setCart(cart);
-		
-		cart.setCustomer(customer);//update cart set customer_id=? , grandtotal=? where cart_id=?
-		
-		
+
+		cart.setCustomer(customer);// update cart set customer_id=? ,
+									// grandtotal=? where cart_id=?
+
 		session.save(customer);
-		
+
 		logger.debug("==========================================================================");
 		session.flush();
-		session.close();		
+		session.close();
 	}
+
 	public Customer getCustomerByUsername(String username) {
-		Session session=sessionFactory.openSession();
-		Query query=session.createQuery("from Users where username=?");
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Users where username=?");
 		query.setString(0, username);
-		Users users=(Users)query.uniqueResult();
-		//com.niit.model.Users 
-		Customer customer=users.getCustomer();
+		Users users = (Users) query.uniqueResult();
+		// com.niit.model.Users
+		Customer customer = users.getCustomer();
 		session.close();
 		return customer;
-		
+
 	}
 }

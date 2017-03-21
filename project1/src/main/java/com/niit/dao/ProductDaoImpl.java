@@ -9,56 +9,71 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.model.Product;
+
 @Repository
 public class ProductDaoImpl implements ProductDao {
-@Autowired
-private SessionFactory sessionFactory;
-	public ProductDaoImpl(){
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	public ProductDaoImpl() {
 		System.out.println("CREATING INSTANCE FOR PRODUCTDAOIMPL");
 	}
-	
-	public Product saveProduct(Product product) {
+
+	public boolean saveProduct(Product product) {
 		System.out.println(product.getId());
-		Session session=sessionFactory.openSession();
-		session.save(product); //insert into product values (next.val,.....)
-		session.flush();
-		session.close();
-		System.out.println(product.getId());
-		return product;	
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.save(product);
+			// insert into product values (next.val,.....)
+			System.out.println(product.getId());
+
+			session.flush();
+			session.close();
+			return true;
+
+		}
+
+		catch (Exception e) {
+
+			return false;
+		}
+
 	}
 
 	public List<Product> getAllProducts() {
-		Session session=sessionFactory.openSession();
-		Query query=session.createQuery("from Product");
-		List<Product> products=query.list();
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Product");
+		List<Product> products = query.list();
 		session.close();
 		return products;
 	}
 
 	public Product getProductById(int id) {
-		Session session=sessionFactory.openSession();
-		//select * from product where id=34
-		Product product=(Product)session.get(Product.class,id);
+		Session session = sessionFactory.openSession();
+		// select * from product where id=34
+		Product product = (Product) session.get(Product.class, id);
 		session.close();
 		return product;
 	}
-	public void deleteProduct(int id){
-		Session session=sessionFactory.openSession();
-		Product product=(Product) session.get(Product.class,id);
+
+	public void deleteProduct(int id) {
+		Session session = sessionFactory.openSession();
+		Product product = (Product) session.get(Product.class, id);
 		session.delete(product);
 		session.flush();
 		session.close();
-	
+
 	}
 
 	public void updateProduct(Product product) {
-		Session session=sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
 		System.out.println("Id of the product in dao is " + product.getId());
-		
+
 		session.update(product);
 		session.flush();
 		session.close();
-		
+
 	}
 
 }

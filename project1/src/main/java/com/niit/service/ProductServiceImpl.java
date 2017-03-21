@@ -16,7 +16,8 @@ public class ProductServiceImpl implements ProductService {
 
 	public Product saveProduct(Product product) {
 
-		return productDao.saveProduct(product);
+		//return productDao.saveProduct(product);
+		return null;
 	}
 
 	public List<Product> getAllProducts() {
