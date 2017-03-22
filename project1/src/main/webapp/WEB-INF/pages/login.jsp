@@ -32,8 +32,12 @@ action="<c:url value="/j_spring_security_check"></c:url>">
 				</div>
 
 <input type="submit" value="sumbit" class="btn btn-default"/>
+<div id="errorMessage">${error }</div>
+			<div id="logOutMessage">${logout}</div>
+			<div id="registrationSuccessMessage">${registrationsuccess}</div>
+
 </form>
 
 </body>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </html>

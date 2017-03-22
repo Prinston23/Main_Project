@@ -45,7 +45,7 @@
 			</div>
 
 			<div class="item">
-				<a href="<c:url value="/product"/>"><img class="img-fluid"
+				<a href="<c:url value="/product"/>"><img class="mask"
 					alt="Home Appliance" src="resources/image/5.jpg"
 					style="height: 560px; width: 1700px"> </a>
 				<div class="carousel-caption"></div>

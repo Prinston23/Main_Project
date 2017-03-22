@@ -1,5 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ include file="/WEB-INF/pages/header.jsp" %>
+<%@ include file="/WEB-INF/pages/header.jsp"%>
 <%@ page isELIgnored="false" %>
 <div class="container-wrapper">
 <div class="container">

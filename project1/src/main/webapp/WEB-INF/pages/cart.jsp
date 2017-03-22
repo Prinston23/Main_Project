@@ -13,7 +13,7 @@
 <body>
 <div ng-app="app" ng-controller="ProductController">
 <div ng-init="getCart(${cartId})">
-<a href="<c:url value="/order/${cartId}"></c:url>" class="btn btn-danger pull-left" ng-click="clearCart()">
+<a href=""  class="btn btn-danger pull-left" ng-click="clearCart()">
 <span class="glyphicon glypicon-remove-sign"></span>Clear Cart</a>
 
 
@@ -42,5 +42,5 @@ TotalPrice:{{calculateGrandTotal()}}
 <script src="<c:url value="/resources/js/controller.js"></c:url>"></script>
 
 </body>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </html>

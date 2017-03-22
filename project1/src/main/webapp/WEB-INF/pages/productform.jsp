@@ -89,5 +89,5 @@ out.println(c.categoryDetails);
 	</div>
 	
 </body>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </html>

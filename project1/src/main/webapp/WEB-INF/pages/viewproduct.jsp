@@ -10,6 +10,7 @@
 <body ng-app="app"  ng-controller="ProductController">
 	<div > 
 		<div class="page-header">
+		
 			<b>PRODUCT DETAILS</b>
 		</div>
 		<table class="table">
@@ -45,5 +46,5 @@
 	<script src="<c:url value="/resources/js/controller.js"></c:url>"></script>
 	
 </body>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </html>
